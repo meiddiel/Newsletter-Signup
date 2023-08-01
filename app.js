@@ -19,9 +19,19 @@ app.post('/', function(req, res){
   var firstName = req.body.fName;
   var lastName = req.body.lName;
   var email = req.body.email;
+  
+  var options = {
+    url:'https://us9.api.mailchimp.com/3.0/lists/38afe7fe55',
+    method:'post',
+  }
 
-  console.log(firstName, lastName, email);
-
+  request(options, function(error, response, body){
+    if (error){
+      console.log(error);
+    } else {
+      console.log(response.statusCode);
+    }
+  });
 });
   
 app.listen(port, function(){
