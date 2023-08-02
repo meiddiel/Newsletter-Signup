@@ -23,7 +23,10 @@ app.post('/', function(req, res){
   var options = {
     url:'https://us9.api.mailchimp.com/3.0/lists/38afe7fe55',
     method:'post',
-  }
+    headers:{
+      'Authorization': 'Meiddiel 877867563316e2bb30bce3cc5d2a0e79'
+    }
+  };
 
   request(options, function(error, response, body){
     if (error){
