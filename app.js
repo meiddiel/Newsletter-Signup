@@ -47,16 +47,20 @@ app.post('/', function(req, res){
   request(options, function(error, response, body){
     if (error){
       console.log(error);
-      res.send('There was an error with signing up, please try again!');
+      res.sendFile(__dirname + '/failure.html');
     } else {
       if (response.statusCode === 200){
         console.log(response.statusCode);
-        res.send('Successfully subscribed!');
+        res.sendFile(__dirname + '/success.html');
       } else {
-        res.send('There was an error with signing up, please try again!');
+      res.sendFile(__dirname + '/failure.html');
       }
     }
   });
+});
+
+app.post('/failure', function(req,res){
+  res.redirect('/');
 });
   
 app.listen(port, function(){
