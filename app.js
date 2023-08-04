@@ -47,8 +47,14 @@ app.post('/', function(req, res){
   request(options, function(error, response, body){
     if (error){
       console.log(error);
+      res.send('There was an error with signing up, please try again!');
     } else {
-      console.log(response.statusCode);
+      if (response.statusCode === 200){
+        console.log(response.statusCode);
+        res.send('Successfully subscribed!');
+      } else {
+        res.send('There was an error with signing up, please try again!');
+      }
     }
   });
 });
